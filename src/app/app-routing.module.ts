@@ -7,10 +7,12 @@ import { AdminTemplateComponent } from './admin-template/admin-template.componen
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { NewProductComponent } from './new-product/new-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { SignUpComponent } from './signup/signup.component';
 
 const routes: Routes = [
 {path: "", component: LoginComponent},
 {path: "login", component: LoginComponent},
+{path: "signup", component: SignUpComponent},
 {path: "admin", component: AdminTemplateComponent, canActivate: [AuthenticationGuard], children: [
   {path: "products", component: ProductsComponent},
   {path: "customers", component: CustomersComponent},

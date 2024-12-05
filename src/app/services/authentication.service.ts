@@ -48,4 +48,18 @@ export class AuthenticationService {
     localStorage.removeItem("authUser");
     return of(true);
    }
+
+   public register(userName: string, password: string): Observable<void> {
+    let userExists = this.users.some(u => u.username === userName);
+    if(userExists) return throwError(() => new Error('Username already taken'));
+
+    let newUser: UserModel = {
+      userId: UUID.UUID(),
+      username: userName,
+      password: password,
+      roles: ['USER']
+    };
+    this.users.push(newUser);
+    return of();
+   }
 }
